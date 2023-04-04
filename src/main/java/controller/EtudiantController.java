@@ -23,7 +23,13 @@ public class EtudiantController extends Controller {
         System.out.println("Tel de l'etudiant: ");
         etudiant.setTel(sc.nextLine().trim());
 
-        System.out.println(etudiant);
+
+        if(etudiant.create()) {
+            System.out.println(etudiant);
+            System.out.println("Etudiant sauvgarder avec success");
+        } else {
+            System.out.println("Error de sauvgarde");
+        }
         return view("EtudiantIndex");
     }
 }

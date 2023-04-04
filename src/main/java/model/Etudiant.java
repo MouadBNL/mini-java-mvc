@@ -1,5 +1,7 @@
 package model;
 
+import java.sql.PreparedStatement;
+
 public class Etudiant extends Model{
     private String nom;
     private String cne;
@@ -8,11 +10,11 @@ public class Etudiant extends Model{
     private String tel;
 
     public Etudiant() {
-        super();
+        init();
     }
 
     public Etudiant(String nom, String cne, float note, String tel) {
-        super();
+        init();
         this.nom = nom;
         this.cne = cne;
         this.note = note;
@@ -60,4 +62,22 @@ public class Etudiant extends Model{
                 ", tel='" + tel + '\'' +
                 '}';
     }
+
+    @Override
+    public boolean create() {
+        try {
+            PreparedStatement create_statement = this.conn.prepareStatement("INSERT INTO etudiants(nom, cne, note, tel) VALUES (?,?,?,?);");
+            create_statement.setString(1, this.nom);
+            create_statement.setString(2, this.cne);
+            create_statement.setFloat(3, this.note);
+            create_statement.setString(4, this.tel);
+
+            create_statement.execute();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 }

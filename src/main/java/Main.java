@@ -7,6 +7,7 @@ public class Main {
 
         boolean exit = false;
         String action = "IndexController@index";
+//        String action = "EtudiantController@store";
         while(!exit) {
             System.out.println("Selected action: " + action);
             if(action.equals("exit")){
