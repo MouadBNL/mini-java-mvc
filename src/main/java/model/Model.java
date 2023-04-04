@@ -16,4 +16,8 @@ public abstract class Model {
     }
 
     public abstract boolean create();
+    public abstract boolean update();
+    public abstract boolean delete();
+    public abstract boolean list();
+    public abstract Model get(int id);
 }
