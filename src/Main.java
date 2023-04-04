@@ -6,14 +6,13 @@ public class Main {
     public static void main(String[] args) {
 
         boolean exit = false;
-        String action;
+        String action = "IndexController@index";
         while(!exit) {
-            action = Router.run("IndexController@index");
             System.out.println("Selected action: " + action);
             if(action.equals("exit")){
                 exit = true;
             } else {
-                Router.run(action);
+                action = Router.run(action);
             }
         }
     }
